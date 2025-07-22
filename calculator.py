@@ -86,7 +86,7 @@ button_div.grid(row=4, column=3)
 button_eq = Button(window, text="=", width=5, height=2,command=button_equal)
 button_eq.grid(row=4, column=2)
 
-button_clear = Button(window,text="C",width=5,height=2, command=lambda: button_clear)
+button_clear = Button(window,text="C",width=5,height=2, command=button_clear)
 button_clear.grid(row=4,column=0)
 
 
