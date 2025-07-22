@@ -5,9 +5,18 @@ window.title("Calculator")
 entry = Entry(window,width=20,justify=RIGHT)
 entry.grid(row=0,column=0,columnspan=4)
 
-
+expression =""
 def button_click(value):
-    entry.insert(END,value)
+    global expression
+    expression=expression+str(value)
+    entry.delete(0,END)
+    entry.insert(END,expression)
+
+
+def button_clear():
+    global expression
+    expression=""
+    entry.delete(0,END)
 
 
 
@@ -57,6 +66,9 @@ button_div.grid(row=4, column=3)
 
 button_eq = Button(window, text="=", width=5, height=2)
 button_eq.grid(row=4, column=2)
+
+button_clear = Button(window,text="C",width=5,height=2, command=lambda: button_clear)
+button_clear.grid(row=4,column=0)
 
 
 
