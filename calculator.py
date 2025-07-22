@@ -105,7 +105,5 @@ button_eq.grid(row=4, column=2, padx=5, pady=5, sticky="nsew")
 button_clear = Button(window,text="C", font=("Arial", 16), command=button_clear)
 button_clear.grid(row=4,column=0, padx=5, pady=5, sticky="nsew")
 
-label=Label(window,text=":)")
-
-
 window.mainloop() #looping the window
+
