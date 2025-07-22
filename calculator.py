@@ -2,22 +2,41 @@ from tkinter import *
 window = Tk() #create object window
 window.title("Calculator")
 
-entry = Entry(window,width=20,justify=RIGHT)
+entry = Entry(window,width=20,justify=RIGHT,state="disabled",disabledforeground="white",disabledbackground="black")
 entry.grid(row=0,column=0,columnspan=4)
 
 expression =""
+
+     
 def button_click(value):
     global expression
     expression=expression+str(value)
+    entry.config(state="normal")
     entry.delete(0,END)
     entry.insert(END,expression)
+    entry.config(state="disabled")
+
+def button_equal():
+    global expression
+    try:
+        result = str(eval(expression))
+        entry.config(state="normal")
+        entry.delete(0, END)
+        entry.insert(END, result)
+        entry.config(state="disabled")
+        expression = result  # allow further calculations
+    except Exception:
+        entry.delete(0, END)
+        entry.insert(END, "Error")
+        expression = ""
 
 
 def button_clear():
     global expression
     expression=""
+    entry.config(state="normal")
     entry.delete(0,END)
-
+    entry.config(state="disabled")
 
 
 # Number buttons
@@ -64,13 +83,11 @@ button_mul.grid(row=3, column=3)
 button_div = Button(window, text="/", width=5, height=2, command=lambda: button_click("/"))
 button_div.grid(row=4, column=3)
 
-button_eq = Button(window, text="=", width=5, height=2)
+button_eq = Button(window, text="=", width=5, height=2,command=button_equal)
 button_eq.grid(row=4, column=2)
 
 button_clear = Button(window,text="C",width=5,height=2, command=lambda: button_clear)
 button_clear.grid(row=4,column=0)
-
-
 
 
 
